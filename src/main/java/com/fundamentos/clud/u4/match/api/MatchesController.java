@@ -23,7 +23,7 @@ import com.fundamentos.clud.u4.match.application.command.handler.CreateMatchComm
 import com.fundamentos.clud.u4.match.application.command.handler.DeleteMatchCommandHandler;
 import com.fundamentos.clud.u4.match.application.command.handler.ProcessCsvFileCommandHandler;
 import com.fundamentos.clud.u4.match.application.command.handler.UpdateMatchCommandHandler;
-import com.fundamentos.clud.u4.match.application.query.handler.GetAllMatchesHandler;
+import com.fundamentos.clud.u4.match.application.query.handler.GetAllMatchesQueryHandler;
 import com.fundamentos.clud.u4.match.domain.Match;
 import com.fundamentos.clud.u4.match.dto.ArchivoBase64DTO;
 import com.fundamentos.clud.u4.match.dto.MatchRequestDTO;
@@ -39,13 +39,13 @@ import lombok.extern.slf4j.Slf4j;
 public class MatchesController {
 
     @Autowired
-    private CreateMatchCommandHandler createMatchHandler;
+    private CreateMatchCommandHandler createMatchCommandHandler;
 
     @Autowired
     private UpdateMatchCommandHandler updateMatchCommandHandler;
 
     @Autowired
-    private GetAllMatchesHandler getAllMatchesHandler;
+    private GetAllMatchesQueryHandler getAllMatchesQueryHandler;
 
     @Autowired
     private ProcessCsvFileCommandHandler processCsvFileCommandHandler;
@@ -56,20 +56,20 @@ public class MatchesController {
     @PostMapping
     public ResponseEntity<Match> createMatch(@RequestBody MatchRequestDTO requestDTO) {
         CreateMatchCommand command = MatchMapper.toCommand(requestDTO);
-        Match created = createMatchHandler.handle(command);
+        Match created = createMatchCommandHandler.handle(command);
         return ResponseEntity.ok(created);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Match> updateMatch(@PathVariable String id, @RequestBody MatchUpdateRequestDTO requestDTO) {
         UpdateMatchCommand command = MatchMapper.toUpdateCommand(id, requestDTO);
-        Match created = updateMatchCommandHandler.handle(id, command);
-        return ResponseEntity.ok(created);
+        Match updated = updateMatchCommandHandler.handle(id, command);
+        return ResponseEntity.ok(updated);
     }
 
     @GetMapping
     public ResponseEntity<List<Match>> getAllMatches() {
-        return ResponseEntity.ok(getAllMatchesHandler.handle());
+        return ResponseEntity.ok(getAllMatchesQueryHandler.handle());
     }
 
     @PostMapping("/upload")

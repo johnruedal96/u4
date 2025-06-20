@@ -2,7 +2,6 @@ package com.fundamentos.clud.u4.infrastructure.config.firebase;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Value;

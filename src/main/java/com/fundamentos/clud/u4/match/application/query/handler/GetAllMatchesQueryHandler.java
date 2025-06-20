@@ -9,7 +9,7 @@ import com.fundamentos.clud.u4.match.domain.Match;
 import com.fundamentos.clud.u4.match.domain.MatchRepository;
 
 @Service
-public class GetAllMatchesHandler {
+public class GetAllMatchesQueryHandler {
     @Autowired
     private MatchRepository repository;
 

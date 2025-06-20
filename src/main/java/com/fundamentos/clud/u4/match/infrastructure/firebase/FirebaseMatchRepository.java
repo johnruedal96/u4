@@ -72,7 +72,7 @@ public class FirebaseMatchRepository implements MatchRepository {
     @Override
     public Match update(String id, Match match) {
         try {
-            firestore.collection(COLLECTION_NAME).document(match.getId()).set(match).get();
+            firestore.collection(COLLECTION_NAME).document(id).set(match).get();
             return match;
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException("Error saving match to Firebase", e);

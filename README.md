@@ -27,3 +27,12 @@ mvn clean install -DskipTests
 ```bash
 mvn spring-boot:run
 ```
+
+## Docker
+```bash
+docker build -t u4 .
+```
+
+```bash
+docker run -p 8100:8100 -e FIREBASE_CREDENTIALS={credentials in base64} u4
+```

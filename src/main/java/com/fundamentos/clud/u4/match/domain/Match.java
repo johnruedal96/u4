@@ -1,6 +1,6 @@
 package com.fundamentos.clud.u4.match.domain;
 
-import java.time.ZonedDateTime;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ public class Match {
     private String equipoLocal;
     private String equipoVisitante;
     private String equipoGanador;
-    private ZonedDateTime fecha;
+    private Date fecha;
     private String estadio;
     private String ciudad;
     private String fase;
